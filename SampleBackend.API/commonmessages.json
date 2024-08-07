@@ -1,0 +1,39 @@
+﻿{
+  "CommonMessages": {
+    "Error": "Something went wrong!",
+    "User": {
+      "SaveSuccess": "User saved successfully.",
+      "SaveError": "Error occured while saving user.",
+      "DeleteSuccess": "User deleted successfully.",
+      "DeleteError": "Error occured while deleting user.",
+      "AlreadyExists": "User already exist with same email address!"
+    },
+    "Login": {
+      "SaveSuccess": "You are logged in successfully."
+    },
+    "RoleRights": {
+      "SaveSuccess": "Rights saved successfully.",
+      "SaveError": "Error occured while saving rights."
+    },
+    "ForgotPassword": {
+      "SaveSuccess": "Reset password link is sent successfully to your registered email address.",
+      "SaveError": "Email address doesn't exists."
+    },
+    "UpdatePassword": {
+      "SaveSuccess": "Password changed successfully.",
+      "SaveError": "Error occured while changing password.",
+      "DeleteError": "You are not authorized to change password."
+    },
+    "TwoFactorAuth": {
+      "SaveSuccess": "Two Factor Authentication Code Sent Successfully to your registered email address.",
+      "SaveError": "The verification code that you entered is incorrect. Please try again!",
+      "DeleteError": "The verification code that you entered is expired. Please send again!"
+    },
+    "Dashboard": {
+      "SaveSuccess": "Dashboard details saved successfully.",
+      "SaveError": "Error occured while saving dashboard details.",
+      "DeleteSuccess": "Dashboard details deleted successfully.",
+      "DeleteError": "Error occured while deleting dashboard details."
+    }
+  }
+}

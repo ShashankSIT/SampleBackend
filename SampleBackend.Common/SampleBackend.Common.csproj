@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>SampleBackend.Common</AssemblyName>
+    <RootNamespace>SampleBackend.Common</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.6.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.1" />
+	<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SampleBackend.Model\SampleBackend.Model.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>SampleBackend.Service</RootNamespace>
+    <AssemblyName>SampleBackend.Service</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SampleBackend.Data\SampleBackend.Data.csproj" />
+    <ProjectReference Include="..\SampleBackend.Model\SampleBackend.Model.csproj" />
+  </ItemGroup>
+
+</Project>
