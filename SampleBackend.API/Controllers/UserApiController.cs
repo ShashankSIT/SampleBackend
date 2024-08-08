@@ -99,51 +99,6 @@ namespace SampleBackend.API.Controllers
             return response;
         }
 
-        [HttpPost("GetBranchDropdownList")]
-        public async Task<ApiResponse<BranchModel>> GetBranchDropdownList(CommonPaginationModel model)
-        {
-            ApiResponse<BranchModel> response = new() { Data = [] };
-            try
-            {
-                List<BranchModel> branches = await _userService.GetBranchDropdownList(model);
-
-                response.Data = branches;
-                response.Success = true;
-            }
-            catch (Exception ex)
-            {
-                string st = _commonMessages.CreateCommonMessage("GetBranchDropdownList", ex.ToString());
-                _logger.Information(st.ToString());
-                response.Success = false;
-                response.Message = ex.Message;
-            }
-            return response;
-        }
-
-
-        [HttpPost("GetCompanyDropdownList")]
-        public async Task<ApiResponse<CompanyModel>> GetCompanyDropdownList(CommonPaginationModel model)
-        {
-            ApiResponse<CompanyModel> response = new() { Data = [] };
-            try
-            {
-                List<CompanyModel> companies = await _userService.GetCompanyDropdownList(model);
-
-                response.Data = companies;
-                response.Success = true;
-            }
-            catch (Exception ex)
-            {
-                string st = _commonMessages.CreateCommonMessage("GetCompanyDropdownList", ex.ToString());
-                _logger.Information(st.ToString());
-                response.Success = false;
-                response.Message = ex.Message;
-            }
-            return response;
-        }
-
-
-
         [HttpPost("SaveUser")]
         public async Task<ApiResponse<long>> SaveUser(UserModel model)
         {

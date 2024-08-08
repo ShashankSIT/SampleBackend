@@ -53,40 +53,6 @@ namespace SampleBackend.Data.DBRepository.User
             }
         }
 
-        public async Task<List<BranchModel>> GetBranchDropdownList(CommonPaginationModel model)
-        {
-            try
-            {
-                var param = new DynamicParameters();
-                param.Add("@PageNumber", model.PageNumber);
-                param.Add("@PageSize", model.PageSize);
-                param.Add("@StrSearch", model.StrSearch);
-                param.Add("@CompanyId", model.Id);
-                var data = await QueryAsync<BranchModel>(StoreProcedure.BranchDropDownList, param, commandType: CommandType.StoredProcedure);
-                return data.ToList();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public async Task<List<CompanyModel>> GetCompanyDropdownList(CommonPaginationModel model)
-        {
-            try
-            {
-                var param = new DynamicParameters();
-                param.Add("@PageNumber", model.PageNumber);
-                param.Add("@PageSize", model.PageSize);
-                param.Add("@StrSearch", model.StrSearch);
-                var data = await QueryAsync<CompanyModel>(StoreProcedure.CompanyDropDownList, param, commandType: CommandType.StoredProcedure);
-                return data.ToList();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
 
         public async Task<UserModel> SaveUser(UserModel model)
         {

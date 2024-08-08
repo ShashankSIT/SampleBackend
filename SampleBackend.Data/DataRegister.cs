@@ -1,5 +1,4 @@
-﻿using SampleBackend.Data.DBRepository.Dashboard;
-using SampleBackend.Data.DBRepository.User;
+﻿using SampleBackend.Data.DBRepository.User;
 using SampleBackend.Data.DBRepository.Login;
 using SampleBackend.Data.DBRepository.RoleRights;
 
@@ -13,8 +12,7 @@ namespace SampleBackend.Data
             {
                 { typeof(ILoginRepository), typeof(LoginRepository) },
                 { typeof(IUserRepository), typeof(UserRepository) },
-                { typeof(IRoleRightsRepository), typeof(RoleRightsRepository) },
-                { typeof(IDashboardRepository), typeof(DashboardRepository) }
+                { typeof(IRoleRightsRepository), typeof(RoleRightsRepository) }
             };
             return dataDictionary;
         }

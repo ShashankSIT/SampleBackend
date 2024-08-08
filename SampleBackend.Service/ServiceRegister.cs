@@ -1,5 +1,4 @@
 ﻿using SampleBackend.Service.Services.User;
-using SampleBackend.Service.Services.Dashboard;
 using SampleBackend.Service.Services.Login;
 using SampleBackend.Service.Services.RoleRights;
 
@@ -13,8 +12,7 @@ namespace SampleBackend.Service
             {
                 { typeof(ILoginService), typeof(LoginService) },
                 { typeof(IUserService), typeof(UserService) },
-                { typeof(IRoleRightsService), typeof(RoleRightsService) },
-                { typeof(IDashboardService), typeof(DashboardService) }
+                { typeof(IRoleRightsService), typeof(RoleRightsService) }
             };
             return serviceDictonary;
         }

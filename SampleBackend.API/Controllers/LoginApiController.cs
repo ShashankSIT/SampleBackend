@@ -47,7 +47,7 @@ namespace SampleBackend.API.Controllers
         {
             ApiPostResponse<LoginModel> response = new();
             try
-            {
+            {   
                 model.Password = GetEncrypt(model.Password ?? string.Empty);
                 LoginModel result = await _loginService.LoginUser(model);
                 if (result != null)

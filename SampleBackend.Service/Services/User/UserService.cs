@@ -30,15 +30,6 @@ namespace SampleBackend.Service.Services.User
             return await _repository.GetUserDropdownList(model);
         }
 
-        public async Task<List<BranchModel>> GetBranchDropdownList(CommonPaginationModel model)
-        {
-            return await _repository.GetBranchDropdownList(model);
-        }
-
-        public async Task<List<CompanyModel>> GetCompanyDropdownList(CommonPaginationModel model)
-        {
-            return await _repository.GetCompanyDropdownList(model);
-        }
         #endregion
 
         #region Post
