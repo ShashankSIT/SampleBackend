@@ -26,6 +26,22 @@ namespace SampleBackend.Data.DBRepository.User
                 param.Add("@SortOrder", model.SortOrder);
                 param.Add("@SortColumn", model.SortColumn);
                 param.Add("@StrSearch", model.StrSearch);
+
+                // Create a table-valued parameter for ColumnFilters
+                var filterTable = new DataTable();
+                filterTable.Columns.Add("ColumnName", typeof(string));
+                filterTable.Columns.Add("FilterValue", typeof(string));
+
+                if (model.ColumnFilters != null && model.ColumnFilters.Any())
+                {
+                    foreach (var filter in model.ColumnFilters)
+                    {
+                        filterTable.Rows.Add(filter.ColumnName, filter.FilterValue);
+                    }
+                }
+
+                param.Add("@ColumnFilters", filterTable.AsTableValuedParameter("dbo.ColumnFilterType")); 
+
                 var data = await QueryAsync<UserModel>(StoreProcedure.UserGetList, param, commandType: CommandType.StoredProcedure);
                 return data.ToList();
             }

@@ -23,7 +23,15 @@
         public string? StrSearch { get; set; }
         public string? SortColumn { get; set; }
         public string? SortOrder { get; set; }
+        public List<ColumnFilterModel>? ColumnFilters { get; set; }
     }
+
+    public class ColumnFilterModel
+    {
+        public string ColumnName { get; set; }
+        public string FilterValue { get; set; }
+    }
+
     public class CommonIdModel : CommonModel
     {
         public long? Id { get; set; }
