@@ -318,9 +318,9 @@ namespace SampleBackend.API.Controllers
             return response;
         }
 
-        [HttpPost("ValidateTwoFactorCode")]
+        [HttpPost("ValidateTwoFactorCodeeee")]
         [AllowAnonymous]
-        public async Task<ApiPostResponse<LoginModel>> ValidateTwoFactorCode([FromBody] UserAuthModel model)
+        public async Task<ApiPostResponse<LoginModel>> ValidateTwoFactorCodeeee([FromBody] UserAuthModel model)
         {
             ApiPostResponse<LoginModel> response = new();
             try
@@ -373,7 +373,7 @@ namespace SampleBackend.API.Controllers
             return response;
         }
 
-        [HttpPost("ResetCode")]
+        [HttpPost("ResetCode")]x
         public async Task<AuthResponse> ResetCode([FromBody] UserAuthModel model)
         {
             AuthResponse response = new();
