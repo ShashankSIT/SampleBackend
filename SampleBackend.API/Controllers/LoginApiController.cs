@@ -373,7 +373,7 @@ namespace SampleBackend.API.Controllers
             return response;
         }
 
-        [HttpPost("ResetCode")]x
+        [HttpPost("ResetCode")]
         public async Task<AuthResponse> ResetCode([FromBody] UserAuthModel model)
         {
             AuthResponse response = new();
