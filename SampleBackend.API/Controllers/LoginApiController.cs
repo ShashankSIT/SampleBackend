@@ -318,9 +318,9 @@ namespace SampleBackend.API.Controllers
             return response;
         }
 
-        [HttpPost("ValidateTwoFactorCode")]
+        [HttpPost("ValidateTwoFactorCodee")]
         [AllowAnonymous]
-        public async Task<ApiPostResponse<LoginModel>> ValidateTwoFactorCode([FromBody] UserAuthModel model)
+        public async Task<ApiPostResponse<LoginModel>> ValidateTwoFactorCodee([FromBody] UserAuthModel model)
         {
             ApiPostResponse<LoginModel> response = new();
             try
@@ -462,5 +462,6 @@ namespace SampleBackend.API.Controllers
             return response;
         }
         #endregion
+
     }
 }
