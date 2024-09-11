@@ -318,9 +318,9 @@ namespace SampleBackend.API.Controllers
             return response;
         }
 
-        [HttpPost("ValidateTwoFactorCode")]
+        [HttpPost("ValidateTwoFactorCodeeeeee")]
         [AllowAnonymous]
-        public async Task<ApiPostResponse<LoginModel>> ValidateTwoFactorCode([FromBody] UserAuthModel model)
+        public async Task<ApiPostResponse<LoginModel>> ValidateTwoFactorCodeeeeee([FromBody] UserAuthModel model)
         {
             ApiPostResponse<LoginModel> response = new();
             try
