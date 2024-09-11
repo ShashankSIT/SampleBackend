@@ -319,6 +319,7 @@ namespace SampleBackend.API.Controllers
         }
 
         [HttpPost("ValidateTwoFactorCode")]
+
         [AllowAnonymous]
         public async Task<ApiPostResponse<LoginModel>> ValidateTwoFactorCode([FromBody] UserAuthModel model)
         {
