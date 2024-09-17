@@ -36,6 +36,10 @@
     {
         public long? Id { get; set; }
     }
+    public class CommonDeleteModel : CommonModel
+    {
+        public List<long>? Ids { get; set; }
+    }
 
     public class CommonPaginationResponse
     {

@@ -15,6 +15,8 @@
         public const string CompanyDropDownList = "SP_CompanyMaster_DropDown";
         public const string SaveUser = "SP_UserMaster_AddUpdate";
         public const string DeleteUser = "SP_UserMaster_Delete";
+        public const string DeleteAllUser = "SP_UserMaster_DeleteAll";
+        public const string DeleteUserMultiple = "SP_UserMaster_DeleteMultiple";
         public const string UserMaster_UpdatePassword = "SP_UserMaster_UpdatePassword";
         public const string UserMaster_ValidateResetPassword = "SP_UserMaster_ValidateResetPassword";
         public const string UserMaster_ValidateTFACode = "SP_UserMaster_ValidateTFACode";
