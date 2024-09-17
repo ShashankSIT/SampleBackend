@@ -203,6 +203,75 @@ namespace SampleBackend.API.Controllers
             return response;
         }
 
+        [HttpPost("DeleteMultipleRecords")]
+        public async Task<ApiResponse<string>> DeleteMultipleRecords([FromBody] CommonDeleteModel model)
+        {
+            ApiResponse<string> response = new();
+            try
+            {
+                if (model.Ids == null || !model.Ids.Any())
+                {
+                    response.Success = false;
+                    response.Message = "No records provided for deletion.";
+                    return response;
+                }
+
+                // Call the service layer to delete the records
+                var result = await _userService.DeleteMultipleRecords(model);
+
+                if (result)
+                {
+                    response.Success = true;
+                    response.Message = "Records deleted successfully.";
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "Failed to delete records.";
+                }
+            }
+            catch (Exception ex)
+            {
+                string st = _commonMessages.CreateCommonMessage("DeleteMultipleRecords", ex.ToString());
+                _logger.Information(st.ToString());
+                response.Success = false;
+                response.Message = "An error occurred while deleting records.";
+            }
+
+            return response;
+        }
+
+
+        [HttpPost("DeleteAllUser")]
+        public async Task<BaseApiResponse> DeleteAllUser(CommonModel model)
+        {
+            BaseApiResponse response = new();
+            try
+            {
+                bool result = await _userService.DeleteAllUser(model);
+                if (result)
+                {
+                    response.Message = _commonMessages?.User?.DeleteSuccess;
+                    response.Success = true;
+                }
+                else
+                {
+                    response.Message = _commonMessages?.User?.DeleteError;
+                    response.Success = false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                string st = _commonMessages.CreateCommonMessage("DeleteAllUser", ex.ToString());
+                _logger.Information(st.ToString());
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+            return response;
+
+        }
+
         #endregion
 
         #region Delete
@@ -227,7 +296,6 @@ namespace SampleBackend.API.Controllers
             }
             catch (Exception ex)
             {
-
                 string st = _commonMessages.CreateCommonMessage("DeleteUser", ex.ToString());
                 _logger.Information(st.ToString());
                 response.Success = false;

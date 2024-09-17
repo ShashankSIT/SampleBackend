@@ -5,6 +5,8 @@ using SampleBackend.Common.Helper;
 using System.Data;
 using SampleBackend.Model.Model;
 using SampleBackend.Model.Model.Model;
+using SampleBackend.Common;
+using System.Data.SqlClient;
 
 namespace SampleBackend.Data.DBRepository.User
 {
@@ -40,7 +42,7 @@ namespace SampleBackend.Data.DBRepository.User
                     }
                 }
 
-                param.Add("@ColumnFilters", filterTable.AsTableValuedParameter("dbo.ColumnFilterType")); 
+                param.Add("@ColumnFilters", filterTable.AsTableValuedParameter("dbo.ColumnFilterType"));
 
                 var data = await QueryAsync<UserModel>(StoreProcedure.UserGetList, param, commandType: CommandType.StoredProcedure);
                 return data.ToList();
@@ -93,6 +95,45 @@ namespace SampleBackend.Data.DBRepository.User
                 throw ex;
             }
         }
+
+        public async Task<bool> DeleteMultipleRecords(CommonDeleteModel model)
+        {
+            ApiResponse<bool> response = new ApiResponse<bool>();
+
+            try
+            {
+                // Convert the list of IDs to a comma-separated string
+                var idString = string.Join(",", model.Ids);
+
+                var param = new DynamicParameters();
+                param.Add("@Ids", idString);
+                param.Add("@AffectedRows", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                await QueryFirstOrDefaultAsync<bool>(StoreProcedure.DeleteUserMultiple, param, commandType: CommandType.StoredProcedure);
+
+
+                int affectedRows = param.Get<int>("@AffectedRows");
+
+                if (affectedRows > 0)
+                {
+                    response.Success = true;
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "No records were deleted.";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+
+            return response.Success;
+        }
+
+
         #endregion
 
         #region Get
@@ -121,6 +162,34 @@ namespace SampleBackend.Data.DBRepository.User
                 if (string.IsNullOrEmpty(result))
                 {
                     return true;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return false;
+        }
+        public async Task<bool> DeleteAllUser(CommonModel model)
+        {
+            try
+            {
+                var param = new DynamicParameters();
+                param.Add("@UpdatedBy", model.LoggedInUserId);
+                param.Add("@AffectedRows", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                await QueryFirstOrDefaultAsync<string>(StoreProcedure.DeleteAllUser, param, commandType: CommandType.StoredProcedure);
+
+                int affectedRows = param.Get<int>("@AffectedRows");
+
+                if (affectedRows > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
 

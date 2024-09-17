@@ -16,6 +16,10 @@ namespace SampleBackend.Service.Services.User
             return await _repository.DeleteUser(model);
         }
 
+        public async Task<bool> DeleteAllUser(CommonModel model)
+        {
+            return await _repository.DeleteAllUser(model);
+        }
 
         #endregion
 
@@ -41,6 +45,11 @@ namespace SampleBackend.Service.Services.User
         public async Task<UserModel> SaveUser(UserModel model)
         {
             return await _repository.SaveUser(model);
+        }
+
+        public async Task<bool> DeleteMultipleRecords(CommonDeleteModel model)
+        {
+            return await _repository.DeleteMultipleRecords(model);
         }
         #endregion
     }
