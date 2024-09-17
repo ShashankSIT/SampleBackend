@@ -1,0 +1,170 @@
+
+--------------------------------- 12/09/2024 03:01:58 pm ----------------------------------
+Requested URL: /api/userprofile/GetUserDetailById
+Exception: Attempted to access a missing method.
+Exception: 
+
+--------------------------------- 12/09/2024 03:02:04 pm ----------------------------------
+Requested URL: /api/userprofile/GetUserDetailById
+Exception: Attempted to access a missing method.
+Exception: 
+
+--------------------------------- 12/09/2024 03:02:11 pm ----------------------------------
+Requested URL: /api/userprofile/GetUserDetailById
+Exception: Attempted to access a missing method.
+Exception: 
+
+--------------------------------- 12/09/2024 03:02:13 pm ----------------------------------
+Requested URL: /api/userprofile/GetUserDetailById
+Exception: Attempted to access a missing method.
+Exception: 
+
+--------------------------------- 12/09/2024 03:02:13 pm ----------------------------------
+Requested URL: /api/userprofile/GetUserDetailById
+Exception: Attempted to access a missing method.
+Exception: 
+
+--------------------------------- 12/09/2024 03:02:25 pm ----------------------------------
+Requested URL: /api/userprofile/GetUserDetailById
+Exception: Attempted to access a missing method.
+Exception: 
+
+--------------------------------- 12/09/2024 03:02:33 pm ----------------------------------
+Requested URL: /api/userprofile/GetUserDetailById
+Exception: Attempted to access a missing method.
+Exception: 
+
+--------------------------------- 12/09/2024 03:02:54 pm ----------------------------------
+Requested URL: /api/userprofile/GetUserDetailById
+Exception: Attempted to access a missing method.
+Exception: 
+
+--------------------------------- 12/09/2024 04:28:25 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Failed to generate Operation for action - SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API). See inner exception
+Exception: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParameters(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+Exception: 
+
+--------------------------------- 12/09/2024 04:28:35 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Failed to generate Operation for action - SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API). See inner exception
+Exception: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParameters(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+Exception: 
+
+--------------------------------- 12/09/2024 04:28:46 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Failed to generate Operation for action - SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API). See inner exception
+Exception: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParameters(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+Exception: 
+
+--------------------------------- 12/09/2024 04:32:43 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Failed to generate Operation for action - SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API). See inner exception
+Exception: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParameters(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+Exception: 
+
+--------------------------------- 12/09/2024 04:33:03 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Failed to generate Operation for action - SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API). See inner exception
+Exception: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParameters(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+Exception: 
+
+--------------------------------- 12/09/2024 04:33:18 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Failed to generate Operation for action - SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API). See inner exception
+Exception: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParameters(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+Exception: 
+
+--------------------------------- 12/09/2024 04:33:20 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Failed to generate Operation for action - SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API). See inner exception
+Exception: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParameters(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+Exception: 
+
+--------------------------------- 12/09/2024 04:33:23 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Failed to generate Operation for action - SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API). See inner exception
+Exception: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParameters(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+Exception: 
+
+--------------------------------- 12/09/2024 04:33:23 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Failed to generate Operation for action - SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API). See inner exception
+Exception: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParameters(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+Exception: 
+
+--------------------------------- 12/09/2024 04:35:58 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Failed to generate Operation for action - SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API). See inner exception
+Exception: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParameters(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+Exception: 
+
+--------------------------------- 12/09/2024 04:39:19 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Ambiguous HTTP method for action - SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API). Actions require an explicit HttpMethod binding for Swagger/OpenAPI 3.0
+Exception: 
+
+--------------------------------- 12/09/2024 05:38:39 pm ----------------------------------
+Requested URL: /api/userprofile/GetLanguageList
+Exception: Multiple constructors accepting all given argument types have been found in type 'SampleBackend.API.Controllers.UserProfileApiController'. There should only be one applicable constructor.
+Exception: 
+
+--------------------------------- 12/09/2024 05:39:25 pm ----------------------------------
+Requested URL: /api/userprofile/GetUserDetailById
+Exception: Multiple constructors accepting all given argument types have been found in type 'SampleBackend.API.Controllers.UserProfileApiController'. There should only be one applicable constructor.
+Exception: 
+
+--------------------------------- 12/09/2024 05:39:41 pm ----------------------------------
+Requested URL: /api/userprofile/GetUserDetailById
+Exception: Multiple constructors accepting all given argument types have been found in type 'SampleBackend.API.Controllers.UserProfileApiController'. There should only be one applicable constructor.
+Exception: 
+
+--------------------------------- 12/09/2024 05:39:51 pm ----------------------------------
+Requested URL: /api/userprofile/GetLanguageList
+Exception: Multiple constructors accepting all given argument types have been found in type 'SampleBackend.API.Controllers.UserProfileApiController'. There should only be one applicable constructor.
+Exception: 
+
+--------------------------------- 12/09/2024 05:39:54 pm ----------------------------------
+Requested URL: /api/userprofile/GetUserDetailById
+Exception: Multiple constructors accepting all given argument types have been found in type 'SampleBackend.API.Controllers.UserProfileApiController'. There should only be one applicable constructor.
+Exception: 
+
+--------------------------------- 12/09/2024 05:39:54 pm ----------------------------------
+Requested URL: /api/userprofile/GetLanguageList
+Exception: Multiple constructors accepting all given argument types have been found in type 'SampleBackend.API.Controllers.UserProfileApiController'. There should only be one applicable constructor.
+Exception: 
+
+--------------------------------- 12/09/2024 05:39:54 pm ----------------------------------
+Requested URL: /api/userprofile/GetUserDetailById
+Exception: Multiple constructors accepting all given argument types have been found in type 'SampleBackend.API.Controllers.UserProfileApiController'. There should only be one applicable constructor.
+Exception: 
+
+--------------------------------- 12/09/2024 05:40:12 pm ----------------------------------
+Requested URL: /api/userprofile/GetLanguageList
+Exception: Multiple constructors accepting all given argument types have been found in type 'SampleBackend.API.Controllers.UserProfileApiController'. There should only be one applicable constructor.
+Exception: 
+
+--------------------------------- 12/09/2024 05:40:12 pm ----------------------------------
+Requested URL: /api/userprofile/GetUserDetailById
+Exception: Multiple constructors accepting all given argument types have been found in type 'SampleBackend.API.Controllers.UserProfileApiController'. There should only be one applicable constructor.
+Exception: 

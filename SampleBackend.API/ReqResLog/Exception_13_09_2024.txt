@@ -1,0 +1,5 @@
+
+--------------------------------- 13/09/2024 04:11:42 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Ambiguous HTTP method for action - SampleBackend.API.Controllers.UserProfileApiController.SetFormatLanguages (SampleBackend.API). Actions require an explicit HttpMethod binding for Swagger/OpenAPI 3.0
+Exception: 

@@ -30,8 +30,8 @@
 
   <ItemGroup>
     <Folder Include="Documents\" />
-    <Folder Include="wwwroot\" />
     <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="wwwroot\Uploads\" />
   </ItemGroup>
 
   <ItemGroup>

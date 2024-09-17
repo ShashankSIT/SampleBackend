@@ -20,6 +20,15 @@
         public const string UserMaster_ValidateTFACode = "SP_UserMaster_ValidateTFACode";
         #endregion
 
+        #region UserProfile
+        public const string GetLanguageList = "SP_GetLanguageList";
+        public const string GetUserDetailById = "SP_GetUserDetailById";
+        public const string UserProfileDetail_AddUpdate = "SP_UserProfileDetail_AddUpdate";
+        public const string GetCountryList = "getCountryList";
+        public const string GetStateList = "getStateList";
+        public const string GetCityList = "getCityList";
+        #endregion
+
         #region Dashboard
         public const string SaveCustomerDashboardDetail = "SP_CustomerDashboardMaster_AddUpdate";
         public const string SaveGRSMaterialPurchasesDetail = "SP_GRSMaterialPurchasesDetail_AddUpdate";
@@ -27,6 +36,7 @@
         public const string GetDashboardMasterDetail = "SP_CustomerDashboardMaster_GetDetails";
         public const string GetGRSMaterialPurchasesDetail = "SP_GRSMaterialPurchasesDetail_GetDetails";
         public const string GetCarbonReductionChartMasterDetail = "SP_CarbonReductionChartMaster_GetDetails";
+
         #endregion
 
         #region Roles

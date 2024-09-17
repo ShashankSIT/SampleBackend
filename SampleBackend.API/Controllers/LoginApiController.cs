@@ -28,7 +28,6 @@ namespace SampleBackend.API.Controllers
         IHttpContextAccessor httpContextAccessor,
         ILoginService loginService,
         IUserService userService) : ControllerBase
-
     {
         #region Fields
         private readonly ILoggerManager _logger = logger;

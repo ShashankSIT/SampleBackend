@@ -1,0 +1,27 @@
+
+--------------------------------- 11/09/2024 02:37:28 pm ----------------------------------
+Requested URL: /api/userprofile/SaveUserProfileDetail
+Exception: The request matched multiple endpoints. Matches: 
+
+SampleBackend.API.Controllers.UserProfileApiController.saveUserProfileDetail (SampleBackend.API)
+SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API)
+Exception: 
+
+--------------------------------- 11/09/2024 02:40:00 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Conflicting method/path combination "POST api/userprofile/SaveUserProfileDetail" for actions - SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API),SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+Exception: 
+
+--------------------------------- 11/09/2024 02:40:36 pm ----------------------------------
+Requested URL: /api/userprofile/SaveUserProfileDetail
+Exception: The request matched multiple endpoints. Matches: 
+
+SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API)
+SampleBackend.API.Controllers.UserProfileApiController.saveUserProfileDetail (SampleBackend.API)
+SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API)
+Exception: 
+
+--------------------------------- 11/09/2024 02:41:35 pm ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Conflicting method/path combination "POST api/userprofile/SaveUserProfileDetail" for actions - SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API),SampleBackend.API.Controllers.UserProfileApiController.SaveUserProfileDetail (SampleBackend.API). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+Exception: 

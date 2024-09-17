@@ -1,0 +1,10 @@
+
+--------------------------------- 17/09/2024 11:32:48 am ----------------------------------
+Requested URL: /swagger/v1/swagger.json
+Exception: Conflicting method/path combination "POST api/userprofile/GetStateListById" for actions - SampleBackend.API.Controllers.UserProfileApiController.GetStateListById (SampleBackend.API),SampleBackend.API.Controllers.UserProfileApiController.GetStateListById (SampleBackend.API). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+Exception: 
+
+--------------------------------- 17/09/2024 12:08:46 pm ----------------------------------
+Requested URL: /api/userprofile/GetStateListById
+Exception: 'long' does not contain a definition for 'LoggedInUserId'
+Exception: 

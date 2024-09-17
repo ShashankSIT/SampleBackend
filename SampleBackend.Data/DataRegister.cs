@@ -1,6 +1,7 @@
 ﻿using SampleBackend.Data.DBRepository.User;
 using SampleBackend.Data.DBRepository.Login;
 using SampleBackend.Data.DBRepository.RoleRights;
+using SampleBackend.Data.DBRepository.UserProfile;
 
 namespace SampleBackend.Data
 {
@@ -12,7 +13,8 @@ namespace SampleBackend.Data
             {
                 { typeof(ILoginRepository), typeof(LoginRepository) },
                 { typeof(IUserRepository), typeof(UserRepository) },
-                { typeof(IRoleRightsRepository), typeof(RoleRightsRepository) }
+                { typeof(IRoleRightsRepository), typeof(RoleRightsRepository) },
+                { typeof(IUserProfileRepository),typeof(UserProfileRepository) },
             };
             return dataDictionary;
         }

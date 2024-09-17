@@ -7,6 +7,9 @@ using SampleBackend.Common;
 using SampleBackend.Model.Model;
 using SampleBackend.Model.Model.Model;
 using SampleBackend.Service.Services.User;
+using SampleBackend.Service.Services.UserProfile;
+using System.Globalization;
+using System.Reflection;
 using static SampleBackend.Common.EncryptionDecryption;
 
 namespace SampleBackend.API.Controllers
@@ -135,6 +138,8 @@ namespace SampleBackend.API.Controllers
             }
             return response;
         }
+
+        
 
         #endregion
 

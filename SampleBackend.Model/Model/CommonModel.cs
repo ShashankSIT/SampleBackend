@@ -28,8 +28,8 @@
 
     public class ColumnFilterModel
     {
-        public string ColumnName { get; set; }
-        public string FilterValue { get; set; }
+        public string? ColumnName { get; set; }
+        public string? FilterValue { get; set; }
     }
 
     public class CommonIdModel : CommonModel
