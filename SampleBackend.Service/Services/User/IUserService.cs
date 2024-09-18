@@ -6,6 +6,7 @@ namespace SampleBackend.Service.Services.User
     public interface IUserService
     {
         Task<List<UserModel>> GetUserList(CommonPaginationModel model);
+        Task<List<UserDetailsMasterModel>> GetUserDetailsList(CommonPaginationModel model);
         Task<List<UserModel>> GetUserDropdownList(CommonPaginationModel model);
         Task<List<UserModel>> GetRoleList();
         Task<UserModel> SaveUser(UserModel model);

@@ -41,6 +41,11 @@ namespace SampleBackend.Service.Services.User
         {
             return await _repository.GetUserList(model);
         }
+        
+        public async Task<List<UserDetailsMasterModel>> GetUserDetailsList(CommonPaginationModel model)
+        {
+            return await _repository.GetUserDetailsList(model);
+        }
 
         public async Task<UserModel> SaveUser(UserModel model)
         {

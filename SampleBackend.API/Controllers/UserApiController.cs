@@ -48,7 +48,6 @@ namespace SampleBackend.API.Controllers
         }
         #endregion
 
-
         #region Post
 
         [HttpPost("GetUserList")]
@@ -58,6 +57,34 @@ namespace SampleBackend.API.Controllers
             try
             {
                 List<UserModel> users = await _userService.GetUserList(model);
+                if (model.Id > 0)
+                {
+                    foreach (var item in users)
+                    {
+                        item.Password = GetDecrypt(item.Password ?? string.Empty);
+                    }
+                }
+
+                response.Data = users;
+                response.Success = true;
+            }
+            catch (Exception ex)
+            {
+                string st = _commonMessages.CreateCommonMessage("GetUserList", ex.ToString());
+                _logger.Information(st.ToString());
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+        
+        [HttpPost("GetUserDetailsList")]
+        public async Task<ApiResponse<UserDetailsMasterModel>> GetUserDetailsList(CommonPaginationModel model)
+        {
+            ApiResponse<UserDetailsMasterModel> response = new() { Data = [] };
+            try
+            {
+                List<UserDetailsMasterModel> users = await _userService.GetUserDetailsList(model);
                 if (model.Id > 0)
                 {
                     foreach (var item in users)

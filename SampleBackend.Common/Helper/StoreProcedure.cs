@@ -10,6 +10,7 @@
 
         #region User
         public const string UserGetList = "SP_UserMaster_GetList";
+        public const string UserDetailsGetList = "SP_UserDetailsMaster_GetList";
         public const string UserDropDownList = "SP_UserMaster_DropDown";
         public const string BranchDropDownList = "SP_BranchMaster_DropDown";
         public const string CompanyDropDownList = "SP_CompanyMaster_DropDown";

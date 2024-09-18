@@ -52,6 +52,41 @@ namespace SampleBackend.Data.DBRepository.User
                 throw ex;
             }
         }
+        public async Task<List<UserDetailsMasterModel>> GetUserDetailsList(CommonPaginationModel model)
+        {
+            try
+            {
+                var param = new DynamicParameters();
+                param.Add("@UserId", model.LoggedInUserId);
+                param.Add("@PageNumber", model.PageNumber);
+                param.Add("@PageSize", model.PageSize);
+                param.Add("@SortOrder", model.SortOrder);
+                param.Add("@SortColumn", model.SortColumn);
+                param.Add("@StrSearch", model.StrSearch);
+
+                // Create a table-valued parameter for ColumnFilters
+                var filterTable = new DataTable();
+                filterTable.Columns.Add("ColumnName", typeof(string));
+                filterTable.Columns.Add("FilterValue", typeof(string));
+
+                if (model.ColumnFilters != null && model.ColumnFilters.Any())
+                {
+                    foreach (var filter in model.ColumnFilters)
+                    {
+                        filterTable.Rows.Add(filter.ColumnName, filter.FilterValue);
+                    }
+                }
+
+                param.Add("@ColumnFilters", filterTable.AsTableValuedParameter("dbo.ColumnFilterType"));
+
+                var data = await QueryAsync<UserDetailsMasterModel>(StoreProcedure.UserDetailsGetList, param, commandType: CommandType.StoredProcedure);
+                return data.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
         public async Task<List<UserModel>> GetUserDropdownList(CommonPaginationModel model)
