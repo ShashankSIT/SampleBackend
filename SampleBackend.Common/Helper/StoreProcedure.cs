@@ -40,6 +40,9 @@
         public const string RoleRightsAddUpdate = "SP_RoleRights_Add";
         #endregion
 
+        public const string CountryList= "getCountryList";
+        public const string StateList = "getStateList";
+        public const string CityList = "getCityList";
 
     }
 }
