@@ -1,21 +1,19 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using SampleBackend.Common;
 using SampleBackend.Model.Model.Model;
 using SampleBackend.Model.Model;
 using Microsoft.Extensions.Options;
 using SampleBackend.API.Logger;
-using SampleBackend.Service.Services.Profile;
-using SampleBackend.Service.Services.User;
 using SampleBackend.Service.Services.Common;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SampleBackend.API.Controllers
 {
     [Route("api/Common")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CommonApiController(
         ILoggerManager logger,
         IOptions<CommonMessages> commonMessages,

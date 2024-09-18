@@ -13,7 +13,7 @@ namespace SampleBackend.Data
             {
                 { typeof(ILoginRepository), typeof(LoginRepository) },
                 { typeof(IUserRepository), typeof(UserRepository) },
-                { typeof(IRoleRightsRepository), typeof(RoleRightsRepository) }
+                { typeof(IRoleRightsRepository), typeof(RoleRightsRepository) },
                 {typeof(ICommonRepository),typeof(CommonRepository) }
             };
             return dataDictionary;
