@@ -92,9 +92,11 @@ namespace SampleBackend.API.Controllers
 
                 UserDetailModel ProfileData = JsonConvert.DeserializeObject<UserDetailModel>(model?.UserDetailData);
                 ProfileData.LoggedInUserId = model.LoggedInUserId;
+                
 
 
-                if (model.ProfileData == null)
+
+                if (model.ProfileData == null && ProfileData.UserPhoto != null)
                 {
                     ProfileData.UserPhoto = null;
                 }

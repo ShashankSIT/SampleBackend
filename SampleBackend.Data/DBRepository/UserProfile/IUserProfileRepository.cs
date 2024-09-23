@@ -19,6 +19,8 @@ namespace SampleBackend.Data.DBRepository.UserProfile
 
         Task<List<StateModel>> GetStateListById(int CountryId);
 
-        Task<List<CityModel>> GetCityListById(int StateId); 
+        Task<List<CityModel>> GetCityListById(int StateId);
+
+        Task<AddressResponse> SaveUserProfileAddress(List<AddressModel> addresses);
     }
 }

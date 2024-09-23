@@ -29,6 +29,8 @@
         public const string GetCountryList = "getCountryList";
         public const string GetStateList = "getStateList";
         public const string GetCityList = "getCityList";
+        public const string UserProfileAddress_AddUpdate = "SP_UserProfileAddress_AddUpdate";
+        public const string GetAddressListById = "SP_GetAddressListById";
         #endregion
 
         #region Dashboard

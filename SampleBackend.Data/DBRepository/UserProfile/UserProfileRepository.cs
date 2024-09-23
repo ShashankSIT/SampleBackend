@@ -103,7 +103,11 @@ namespace SampleBackend.Data.DBRepository.UserProfile
                 var param = new DynamicParameters();
                 param.Add("@UserId", UserId);
 
-                var data = await QueryFirstOrDefaultAsync<UserDetailModel>(StoreProcedure.GetUserDetailById, param, commandType: CommandType.StoredProcedure);
+                UserDetailModel data = await QueryFirstOrDefaultAsync<UserDetailModel>(StoreProcedure.GetUserDetailById, param, commandType: CommandType.StoredProcedure);
+                
+                var param1 = new DynamicParameters();
+                param1.Add("@UserDetailId", data.UserDetailId);
+                data.Address = (await QueryAsync<AddressModel>(StoreProcedure.GetAddressListById, param1, commandType: CommandType.StoredProcedure)).ToList();
                 return data;
             }
             catch (Exception ex)
@@ -112,11 +116,38 @@ namespace SampleBackend.Data.DBRepository.UserProfile
                 throw ex;
             }
         }
+
+        #endregion
+
+        #region AddUpdate - Address
+        public async Task<AddressResponse> SaveUserProfileAddress(List<AddressModel>? addresses)
+        {
+            var dt = new DataTable();
+            dt.Columns.Add("AddressId", typeof(int));
+            dt.Columns.Add("Address1", typeof(string));
+            dt.Columns.Add("Address2", typeof(string));
+            dt.Columns.Add("CountryId", typeof(int));
+            dt.Columns.Add("StateId", typeof(int));
+            dt.Columns.Add("CityId", typeof(int));
+            dt.Columns.Add("UserDetailId", typeof(long));
+            dt.Columns.Add("IsDelete", typeof(bool));
+
+            foreach (var address in addresses)
+            {
+                dt.Rows.Add(address.AddressId.HasValue ? (object)address.AddressId : DBNull.Value, address.Address1, address.Address2, address.CountryId, address.StateId, address.CityId, address.UserDetailId,address.IsDelete);
+            }
+
+            var param = new DynamicParameters();
+            param.Add("@AddressTable", dt.AsTableValuedParameter("dbo.AddressType"));
+
+            AddressResponse addressModel = await QueryFirstOrDefaultAsync<AddressResponse>(StoreProcedure.UserProfileAddress_AddUpdate, param, commandType: CommandType.StoredProcedure);
+            return addressModel;
+        }
         #endregion
 
         #region AddUpdate - UserProfile
         public async Task<UserDetailModel> SaveUserProfileDetail(UserDetailModel model)
-        {
+            {
             try
             {
                 var param = new DynamicParameters();
@@ -128,12 +159,27 @@ namespace SampleBackend.Data.DBRepository.UserProfile
                 param.Add("@UserPhoto", model.UserPhoto);
                 param.Add("@Gender", model.Gender);
                 param.Add("@DOB", model.DOB);
-                param.Add("@Address", model.Address);
                 param.Add("@Languages", model.Languages);
                 param.Add("@UserId", model.LoggedInUserId);
                 param.Add("@CreatedBy", model.LoggedInUserId);
 
-                return await QueryFirstOrDefaultAsync<UserDetailModel>(StoreProcedure.UserProfileDetail_AddUpdate, param, commandType: CommandType.StoredProcedure);
+                UserDetailModel userDetailModel =  await QueryFirstOrDefaultAsync<UserDetailModel>(StoreProcedure.UserProfileDetail_AddUpdate, param, commandType: CommandType.StoredProcedure);
+
+                if(userDetailModel != null && userDetailModel.UserDetailId > 0)
+                {
+                    model?.Address?.ForEach(address => address.UserDetailId = (long)userDetailModel.UserDetailId);
+                    AddressResponse addressModel = await SaveUserProfileAddress(model?.Address);
+                    if (addressModel != null)
+                    {
+                        Console.WriteLine(addressModel.Success);
+                    }
+                    else
+                    {
+                        Console.WriteLine(addressModel.ErrorMessage);
+                    }
+
+                }
+                return userDetailModel;
             }
             catch (Exception)
             {

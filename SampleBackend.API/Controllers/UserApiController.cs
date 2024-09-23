@@ -265,7 +265,7 @@ namespace SampleBackend.API.Controllers
             }
             catch (Exception ex)
             {
-
+                    
                 string st = _commonMessages.CreateCommonMessage("DeleteAllUser", ex.ToString());
                 _logger.Information(st.ToString());
                 response.Success = false;

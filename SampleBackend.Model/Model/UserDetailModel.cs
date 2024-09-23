@@ -17,7 +17,7 @@ namespace SampleBackend.Model.Model.Model
         public string? UserPhoto { get; set; }
         public string? Gender { get; set; }
         public string? DOB { get; set; }
-        public string? Address { get; set; }
+        public List<AddressModel>? Address {  get; set; }
         public string? Languages { get; set; }
         public string[]? FormatLanguages { get; set; }
     }
