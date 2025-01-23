@@ -130,6 +130,30 @@ namespace SampleBackend.Data.DBRepository.User
                 throw ex;
             }
         }
+        
+        public async Task<UserModel> SaveUserDetails(UserModel model)
+        {
+            try
+            {
+                var param = new DynamicParameters();
+                param.Add("@UserId", model.UserId);
+                param.Add("@FirstName", model.FirstName);
+                param.Add("@LastName", model.LastName);
+                param.Add("@Email", model.Email);
+                param.Add("@Password", model.Password);
+                param.Add("@RoleId", model.RoleId);
+                param.Add("@CompanyId", model.CompanyId);
+                param.Add("@BranchId", model.BranchId);
+                param.Add("@PhoneNo", model.PhoneNo);
+                param.Add("@CreatedBy", model.LoggedInUserId);
+                return await QueryFirstOrDefaultAsync<UserModel>(StoreProcedure.SaveUser, param, commandType: CommandType.StoredProcedure);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public async Task<bool> DeleteMultipleRecords(CommonDeleteModel model)
         {

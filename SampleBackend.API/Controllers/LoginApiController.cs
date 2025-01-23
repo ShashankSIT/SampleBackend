@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using SampleBackend.Model.Model;
 using static SampleBackend.Common.EmailNotification;
-using static SampleBackend.Common.EncryptionDecryption;
+using static SampleBackend.Common.EncryptionDecryption; 
 using SampleBackend.Service.Services.Login;
 using SampleBackend.Service.Services.User;
 using SampleBackend.Model.Model.Model;

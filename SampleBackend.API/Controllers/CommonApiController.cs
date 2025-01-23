@@ -38,7 +38,7 @@ namespace SampleBackend.API.Controllers
             }
             catch (Exception ex)
             {
-                string st = _commonMessages.CreateCommonMessage("GetUserProfileById", ex.ToString());
+                string st = _commonMessages.CreateCommonMessage("GetCountryList", ex.ToString());
                 _logger.Information(st.ToString());
                 response.Success = false;
                 response.Message = ex.Message;
@@ -58,13 +58,14 @@ namespace SampleBackend.API.Controllers
             }
             catch (Exception ex)
             {
-                string st = _commonMessages.CreateCommonMessage("GetUserProfileById", ex.ToString());
+                string st = _commonMessages.CreateCommonMessage("GetStateList", ex.ToString());
                 _logger.Information(st.ToString());
                 response.Success = false;
                 response.Message = ex.Message;
             }
             return response;
         }
+
         [HttpGet("GetCityList")]
         public async Task<ApiPostResponse<IEnumerable<CityModel>>> GetCityList(int StateId)
         {
@@ -78,7 +79,7 @@ namespace SampleBackend.API.Controllers
             }
             catch (Exception ex)
             {
-                string st = _commonMessages.CreateCommonMessage("GetUserProfileById", ex.ToString());
+                string st = _commonMessages.CreateCommonMessage("GetCityList", ex.ToString());
                 _logger.Information(st.ToString());
                 response.Success = false;
                 response.Message = ex.Message;
