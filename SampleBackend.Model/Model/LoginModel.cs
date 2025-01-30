@@ -18,6 +18,7 @@
         public string? EncryptedUserId { get; set; }
         public bool? Is2FARequired { get; set; }
         public string? VerifyUser { get; set; }
+        public int? BranchId { get; set; }
     }
 
     public class UserLoginTrackModel

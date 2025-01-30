@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using Dapper;
 using SampleBackend.Common;
 using SampleBackend.Model.Model;
+using Npgsql;
 
 namespace SampleBackend.Data
 {
@@ -73,6 +74,72 @@ namespace SampleBackend.Data
         }
 
         #endregion
+
+        #region PostgreSQL Methods
+
+        public async Task<T> PostgreQueryFirstOrDefaultAsync<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = CommandType.StoredProcedure)
+        {
+            string SqlConnectionString = EncryptionDecryption.GetDecrypt(_connectionString.Value.NpgSqlConnection ?? string.Empty);
+            using (NpgsqlConnection con = new(SqlConnectionString))
+            {
+                await con.OpenAsync();
+                return await con.QueryFirstOrDefaultAsync<T>(sql, param, commandType: commandType);
+            }
+        }
+        
+        public async Task<T> PostgreQueryFirstOrDefaultAsync2<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = CommandType.StoredProcedure)
+        {
+            //string SqlConnectionString = EncryptionDecryption.GetDecrypt(_connectionString.Value.NpgSqlConnection ?? string.Empty);
+            string SqlConnectionString = EncryptionDecryption.GetDecrypt(_connectionString.Value.NpgSqlConnection2 ?? string.Empty);
+            using (NpgsqlConnection con = new(SqlConnectionString))
+            {
+                await con.OpenAsync();
+                return await con.QueryFirstOrDefaultAsync<T>(sql, param, commandType: commandType);
+            }
+        }
+
+        public async Task<IEnumerable<T>> PostgreQueryAsync<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = CommandType.StoredProcedure)
+        {
+            string SqlConnectionString = EncryptionDecryption.GetDecrypt(_connectionString.Value.NpgSqlConnection ?? string.Empty);
+            using (NpgsqlConnection con = new(SqlConnectionString))
+            {
+                await con.OpenAsync();
+                return await con.QueryAsync<T>(sql, param, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task<object> PostgreExecuteScalarAsync<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = CommandType.StoredProcedure)
+        {
+            string SqlConnectionString = EncryptionDecryption.GetDecrypt(_connectionString.Value.NpgSqlConnection ?? string.Empty);
+            using (NpgsqlConnection con = new(SqlConnectionString))
+            {
+                await con.OpenAsync();
+                return await con.ExecuteScalarAsync<object>(sql, param, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task<int> PostgreExecuteAsync<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = CommandType.StoredProcedure)
+        {
+            string SqlConnectionString = EncryptionDecryption.GetDecrypt(_connectionString.Value.NpgSqlConnection ?? string.Empty);
+            using (NpgsqlConnection con = new(SqlConnectionString))
+            {
+                await con.OpenAsync();
+                return await con.ExecuteAsync(sql, param, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task<SqlMapper.GridReader> PostgreQueryMultipleAsync<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = CommandType.StoredProcedure)
+        {
+            string SqlConnectionString = EncryptionDecryption.GetDecrypt(_connectionString.Value.NpgSqlConnection ?? string.Empty);
+            using (NpgsqlConnection con = new(SqlConnectionString))
+            {
+                await con.OpenAsync();
+                return await con.QueryMultipleAsync(sql, param, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        #endregion
+
 
         #region Navision SQL Methods
 

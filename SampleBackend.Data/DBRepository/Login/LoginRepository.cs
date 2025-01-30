@@ -18,17 +18,22 @@ namespace SampleBackend.Data.DBRepository.Login
         #region Post
         public async Task<LoginModel> LoginUser(LoginModel model)
         {
-            try
-            {
-                var param = new DynamicParameters();
-                param.Add("@Email", model.Email);
-                param.Add("@Password", model.Password);
-                return await QueryFirstOrDefaultAsync<LoginModel>(StoreProcedure.LoginUser, param, commandType: CommandType.StoredProcedure);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            //try
+            //{
+            //    var param = new DynamicParameters();
+            //    param.Add("@Email", model.Email);
+            //    param.Add("@Password", model.Password);
+            //    return await QueryFirstOrDefaultAsync<LoginModel>("SP_UserMaster_Login", param, commandType: CommandType.StoredProcedure);
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //}
+            var param = new DynamicParameters();
+            param.Add("@p_email", model.Email); // Change parameter names
+            param.Add("@p_password", model.Password);
+
+            return await QueryFirstOrDefaultAsync<LoginModel>("SELECT * FROM sp_usermaster_login(@p_email, @p_password)", param, commandType: CommandType.Text);
         }
 
         public async Task<UserLoginTrackModel> SaveLoginUserTrack(LoginModel model)

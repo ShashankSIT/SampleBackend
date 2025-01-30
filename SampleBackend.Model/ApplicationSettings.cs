@@ -16,5 +16,7 @@
     {
         public string? DefaultConnection { get; set; }
         public string? NavisionConnection { get; set; }
+        public string? NpgSqlConnection { get; set; }
+        public string? NpgSqlConnection2 { get; set; }
     }
 }
