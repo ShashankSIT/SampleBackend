@@ -30,6 +30,20 @@ namespace SampleBackend.Data.DBRepository.Login
                 throw ex;
             }
         }
+        public async Task<LoginModel> LoginWithoutPassword(LoginModel model)
+        {
+            try
+            {
+                var param = new DynamicParameters();
+                param.Add("@UserId", model.UserId);
+                param.Add("@TemporaryPassword", model.TemporaryPassword);
+                return await QueryFirstOrDefaultAsync<LoginModel>(StoreProcedure.LoginWithoutPassword, param, commandType: CommandType.StoredProcedure);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public async Task<UserLoginTrackModel> SaveLoginUserTrack(LoginModel model)
         {
@@ -53,6 +67,7 @@ namespace SampleBackend.Data.DBRepository.Login
                 param.Add("@Email", model.Email);
                 param.Add("@TwoFactorCode", model.TwoFactorCode);
                 param.Add("@VerifyUser", model.VerifyUser);
+                param.Add("@TemporaryPassword", model.TemporaryPassword);
                 return await QueryFirstOrDefaultAsync<long>(StoreProcedure.UserMaster_ValidateEmail, param, commandType: CommandType.StoredProcedure);
             }
             catch (Exception ex)

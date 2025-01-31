@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using SampleBackend.Model.Model;
 using static SampleBackend.Common.EmailNotification;
-using static SampleBackend.Common.EncryptionDecryption; 
+using static SampleBackend.Common.EncryptionDecryption;
 using SampleBackend.Service.Services.Login;
 using SampleBackend.Service.Services.User;
 using SampleBackend.Model.Model.Model;
@@ -47,63 +47,77 @@ namespace SampleBackend.API.Controllers
         {
             ApiPostResponse<LoginModel> response = new();
             try
-            {   
-                model.Password = GetEncrypt(model.Password ?? string.Empty);
-                LoginModel result = await _loginService.LoginUser(model);
-                if (result != null)
+            {
+                if (model.TemporaryPassword != null)
                 {
-                    if (string.IsNullOrEmpty(result.ErrorMessage))
+                    model.UserId = Convert.ToInt64(GetDecrypt(model.EncryptedUserId ?? ""));
+                    model = await _loginService.LoginWithoutPassword(model);
+                    model.Password = GetDecrypt(model.Password ?? string.Empty);
+                }
+                if (model.Password != null)
+                {
+                    model.Password = GetEncrypt(model.Password ?? string.Empty);
+                    LoginModel result = await _loginService.LoginUser(model);
+                    if (result != null)
                     {
-                        if (!string.Equals(result.RoleName, RoleName.SuperAdmin) && result.IsBlocked == true)
+                        if (string.IsNullOrEmpty(result.ErrorMessage))
                         {
-                            response.Message = result.ErrorMessage;
-                            response.Success = false;
+                            if (!string.Equals(result.RoleName, RoleName.SuperAdmin) && result.IsBlocked == true)
+                            {
+                                response.Message = result.ErrorMessage;
+                                response.Success = false;
+                            }
+                            else
+                            {
+                                response.Success = true;
+                                string? host = _httpContextAccessor?.HttpContext?.Request?.Host.Value;
+                                string? scheme = _httpContextAccessor?.HttpContext?.Request?.Scheme;
+                                string hosturl = scheme + "://" + host;
+                                result.UserPhoto = Path.Combine(hosturl, _dataConfig.UserProfile ?? string.Empty, result.UserPhoto ?? string.Empty);
+                                string UserName = result.FirstName + " " + result.LastName;
+                                result.JWTToken = JWTToken.GenerateJSONWebToken(result.Email ?? string.Empty, GetEncrypt(result.UserId.ToString()), result.RoleId.ToString() ?? string.Empty, _appSettings.JWT_Secret ?? string.Empty);
+                                response.Data = result;
+                                response.Message = _commonMessages?.Login?.SaveSuccess;
+                                response.Data.EncryptedUserId = response.Success && (result.IsFirstLogin == true || result.Is2FARequired == true) ? HttpUtility.UrlEncode(GetEncrypt(Convert.ToString(result.UserId))) : string.Empty;
+                                if (response.Success && result.Is2FARequired == true)
+                                {
+                                    // TFA Code
+                                    UserAuthModel userAuthModel = new()
+                                    {
+                                        UserId = result.UserId,
+                                        Is2FARequired = result.Is2FARequired
+                                    };
+                                    AuthResponse resetCodeResult = await ResetCode(userAuthModel);
+                                    result.VerifyUser = resetCodeResult.TAID;
+                                    response.Message = resetCodeResult.Message;
+                                }
+                                result.UserId = 0;
+                            }
                         }
                         else
                         {
-                            response.Success = true;
-                            string? host = _httpContextAccessor?.HttpContext?.Request?.Host.Value;
-                            string? scheme = _httpContextAccessor?.HttpContext?.Request?.Scheme;
-                            string hosturl = scheme + "://" + host;
-                            result.UserPhoto = Path.Combine(hosturl, _dataConfig.UserProfile ?? string.Empty, result.UserPhoto ?? string.Empty);
-                            string UserName = result.FirstName + " " + result.LastName;
-                            result.JWTToken = JWTToken.GenerateJSONWebToken(result.Email ?? string.Empty, GetEncrypt(result.UserId.ToString()), result.RoleId.ToString() ?? string.Empty, _appSettings.JWT_Secret ?? string.Empty);
-                            response.Data = result;
-                            response.Message = _commonMessages?.Login?.SaveSuccess;
-                            response.Data.EncryptedUserId = response.Success && (result.IsFirstLogin == true || result.Is2FARequired == true) ? HttpUtility.UrlEncode(GetEncrypt(Convert.ToString(result.UserId))) : string.Empty;
-                            if (response.Success && result.Is2FARequired == true)
+                            response.Success = false;
+                            response.Message = result.ErrorMessage;
+                            if (!string.IsNullOrEmpty(result?.ErrorMessage) && result.UserId > 0) // For wrong credentials
                             {
-                                // TFA Code
-                                UserAuthModel userAuthModel = new()
+                                UserLoginTrackModel loginResult = await _loginService.SaveLoginUserTrack(model);
+                                if (loginResult.IsSuperAdmin == false)
                                 {
-                                    UserId = result.UserId,
-                                    Is2FARequired = result.Is2FARequired
-                                };
-                                AuthResponse resetCodeResult = await ResetCode(userAuthModel);
-                                result.VerifyUser = resetCodeResult.TAID;
-                                response.Message = resetCodeResult.Message;
+                                    int remainingAttempts = 5 - loginResult.WrongAttemptCount ?? 0;
+                                    response.Message = remainingAttempts <= 0 ? "Your account is locked due to too many wrong attempts, please contact your administrator!" : "Please enter valid credentials.  You have " + remainingAttempts + " attempts left!";
+                                }
                             }
-                            result.UserId = 0;
                         }
                     }
                     else
                     {
+                        response.Message = result?.ErrorMessage;
                         response.Success = false;
-                        response.Message = result.ErrorMessage;
-                        if (!string.IsNullOrEmpty(result?.ErrorMessage) && result.UserId > 0) // For wrong credentials
-                        {
-                            UserLoginTrackModel loginResult = await _loginService.SaveLoginUserTrack(model);
-                            if (loginResult.IsSuperAdmin == false)
-                            {
-                                int remainingAttempts = 5 - loginResult.WrongAttemptCount ?? 0;
-                                response.Message = remainingAttempts <= 0 ? "Your account is locked due to too many wrong attempts, please contact your administrator!" : "Please enter valid credentials.  You have " + remainingAttempts + " attempts left!";
-                            }
-                        }
                     }
                 }
                 else
                 {
-                    response.Message = result?.ErrorMessage;
+                    response.Message = "Something Went Wrong!";
                     response.Success = false;
                 }
             }
@@ -135,6 +149,94 @@ namespace SampleBackend.API.Controllers
                 else
                 {
                     response.Message = result;
+                    response.Success = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.Information(ex.ToString());
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+        [HttpPost("LoginWithoutPassword")]
+        [AllowAnonymous]
+        public async Task<BaseApiResponse> LoginWithoutPassword([FromBody] UserAuthModel model)
+        {
+            BaseApiResponse response = new();
+            try
+            {
+                string TempPassword = GeneratePassword(35, true);
+                UserAuthModel AuthModel = new()
+                {
+                    Email = model.Email,
+                    TemporaryPassword = TempPassword
+                };
+                long UserId = await _loginService.ValidateUserEmail(AuthModel);
+                if (UserId > 0)
+                {
+                    CommonPaginationModel PaginationModel = new()
+                    {
+                        Id = UserId
+                    };
+                    List<UserModel> UserData = await _userService.GetUserList(PaginationModel);
+                    if (UserData != null && UserData.Count > 0)
+                    {
+                        UserModel UserDetail = UserData[0];
+                        string UserName = UserDetail.FirstName + " " + UserDetail.LastName;
+                        string EncryptedUserId = HttpUtility.UrlEncode(GetEncrypt(Convert.ToString(UserId)));
+
+                        string Subject = "Login Without Password";
+                        string EmailHTML = string.Empty;
+                        EmailSetting setting = GetEmailSettingObj(Convert.ToBoolean(_appSettings.EmailEnableSsl), _appSettings.EmailHostName ?? string.Empty, _appSettings.EmailAppPassword ?? string.Empty, _appSettings.EmailAppPassword ?? string.Empty, Convert.ToInt32(_appSettings.EmailPort), _appSettings.EmailUsername ?? string.Empty, _appSettings.FromEmail ?? string.Empty, _appSettings.FromName ?? string.Empty);
+
+                        string BasePath = Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplates");
+
+                        if (!Directory.Exists(BasePath))
+                        {
+                            Directory.CreateDirectory(BasePath);
+                        }
+                        using StreamReader reader = new(Path.Combine(BasePath, "LoginWithoutPassword.html"));
+                        string EmailBody = reader.ReadToEnd();
+                        string Client_URL = _dataConfig.WebAppURL ?? string.Empty;
+                        EmailBody = EmailBody.Replace("##UserName##", UserName);
+                        EmailBody = EmailBody.Replace("##LogoURL##", string.Concat(Client_URL, _dataConfig.LogoPath ?? string.Empty, "/veltuff-logo.svg"));
+                        EmailBody = EmailBody.Replace("##ResetPasswordLink##", Path.Combine(Client_URL, "auth/login-without-password?userId=" + EncryptedUserId + "&auth=" + TempPassword));
+                        bool IsSuccess = SendMailMessage(model.Email ?? string.Empty, string.Empty, string.Empty, Subject, EmailBody, setting, string.Empty);
+
+                        //Email Log History
+                        Task EmailLog = new(async () =>
+                        {
+                            EmailNotificationLogDetailModel notification = new()
+                            {
+                                NotificationType = EmailNotificationType.ForgotPassword,
+                                FromEmail = setting.FromEmail,
+                                ToEmail = model.Email,
+                                EmailSubject = Subject,
+                                EmailBody = EmailBody,
+                                IsSuccess = IsSuccess,
+                                RecipientType = UserDetail.RoleName == RoleName.SuperAdmin ? RoleName.SuperAdmin : UserDetail.RoleName == RoleName.Admin ? RoleName.Admin : RoleName.MoveManager
+                            };
+                            //long Notification = await _notificationService.SaveEmailNotificationLogDetail(notification);
+                        });
+
+                        if (IsSuccess)
+                        {
+                            response.Message = "Please Check Email";
+                            response.Success = true;
+                        }
+                        else
+                        {
+                            response.Message = _commonMessages.Error;
+                            response.Success = false;
+                        }
+                    }
+                }
+                else
+                {
+                    response.Message = _commonMessages.ForgotPassword?.SaveError;
                     response.Success = false;
                 }
             }

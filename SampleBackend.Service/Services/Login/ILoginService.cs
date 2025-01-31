@@ -6,6 +6,7 @@ namespace SampleBackend.Service.Services.Login
     {
         #region Post
         Task<LoginModel> LoginUser(LoginModel model);
+        Task<LoginModel> LoginWithoutPassword(LoginModel model);
         Task<UserLoginTrackModel> SaveLoginUserTrack(LoginModel model);
         Task<long> ValidateUserEmail(UserAuthModel model);
         Task<string> UpdatePassword(UserAuthModel model);

@@ -39,6 +39,11 @@ namespace SampleBackend.Service.Services.Login
         {
             return await _repository.ValidateTwoFactorCode(UserId, TwoFactorCode, VerifyUser);
         }
+
+        public async Task<LoginModel> LoginWithoutPassword(LoginModel model)
+        {
+            return await _repository.LoginWithoutPassword(model);
+        }
         #endregion
     }
 }

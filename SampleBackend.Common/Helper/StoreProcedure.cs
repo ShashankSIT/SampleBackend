@@ -4,6 +4,7 @@
     {
         #region Login
         public const string LoginUser = "SP_UserMaster_Login";
+        public const string LoginWithoutPassword = "SP_GetPasswordByTemporaryPassword";
         public const string UserLogInTrack_AddUpdate = "SP_UserLogInTrack_AddUpdate";
         public const string UserMaster_ValidateEmail = "SP_UserMaster_ValidateEmail";
         #endregion
