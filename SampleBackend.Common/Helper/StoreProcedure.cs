@@ -20,6 +20,18 @@
         public const string UserMaster_ValidateTFACode = "SP_UserMaster_ValidateTFACode";
         #endregion
 
+        #region User
+        //public const string ChatUserDropDownList = "UserDropDownList"; // Existing
+        //public const string ChatSaveUser = "SaveUser"; // Existing
+        public const string CreateChat = "CreateChat";
+        public const string AddChatParticipant = "AddChatParticipant";
+        public const string SendMessage = "SendMessage";
+        public const string GetChatsForUser = "GetChatsForUser";
+        public const string GetMessagesForChat = "GetMessagesForChat";
+        public const string GetOrCreatePrivateChat = "GetOrCreatePrivateChat";
+        public const string CreateGroupChat = "CreateGroupChat";
+        #endregion
+
         #region Dashboard
         public const string SaveCustomerDashboardDetail = "SP_CustomerDashboardMaster_AddUpdate";
         public const string SaveGRSMaterialPurchasesDetail = "SP_GRSMaterialPurchasesDetail_AddUpdate";

@@ -9,5 +9,10 @@ namespace SampleBackend.Data.DBRepository.User
         Task<List<UserModel>> GetRoleList();
         Task<UserModel> SaveUser(UserModel model);
         Task<bool> DeleteUser(CommonIdModel model);
+
+
+        #region Chat
+
+        #endregion
     }
 }

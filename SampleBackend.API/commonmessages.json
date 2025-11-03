@@ -34,6 +34,12 @@
       "SaveError": "Error occured while saving dashboard details.",
       "DeleteSuccess": "Dashboard details deleted successfully.",
       "DeleteError": "Error occured while deleting dashboard details."
+    },
+    "Chat": {
+      "SaveSuccess": "saved successfully.",
+      "SaveError": "Error occured while saving.",
+      "DeleteSuccess": "deleted successfully.",
+      "DeleteError": "Error occured while deleting."
     }
   }
 }

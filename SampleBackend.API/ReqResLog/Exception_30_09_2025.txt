@@ -1,0 +1,30 @@
+
+--------------------------------- 30/09/2025 07:29:34 PM ----------------------------------
+Requested URL: /api/chat/chats
+Exception: Unable to resolve service for type 'SampleBackend.Service.Services.Chat.IChatService' while attempting to activate 'SampleBackend.API.Controllers.ChatController'.
+Exception: 
+
+--------------------------------- 30/09/2025 07:29:37 PM ----------------------------------
+Requested URL: /api/chat/chats
+Exception: Unable to resolve service for type 'SampleBackend.Service.Services.Chat.IChatService' while attempting to activate 'SampleBackend.API.Controllers.ChatController'.
+Exception: 
+
+--------------------------------- 30/09/2025 07:29:58 PM ----------------------------------
+Requested URL: /api/chat/chats
+Exception: Unable to resolve service for type 'SampleBackend.Service.Services.Chat.IChatService' while attempting to activate 'SampleBackend.API.Controllers.ChatController'.
+Exception: 
+
+--------------------------------- 30/09/2025 07:30:55 PM ----------------------------------
+Requested URL: /api/chat/chats
+Exception: Unable to resolve service for type 'SampleBackend.Service.Services.Chat.IChatService' while attempting to activate 'SampleBackend.API.Controllers.ChatController'.
+Exception: 
+
+--------------------------------- 30/09/2025 07:31:30 PM ----------------------------------
+Requested URL: /api/chat/chats
+Exception: Unable to resolve service for type 'SampleBackend.Service.Services.Chat.IChatService' while attempting to activate 'SampleBackend.API.Controllers.ChatController'.
+Exception: 
+
+--------------------------------- 30/09/2025 07:32:31 PM ----------------------------------
+Requested URL: /api/chat/chats
+Exception: Unable to resolve service for type 'SampleBackend.Service.Services.Chat.IChatService' while attempting to activate 'SampleBackend.API.Controllers.ChatController'.
+Exception: 

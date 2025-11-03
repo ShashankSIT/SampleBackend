@@ -6,6 +6,7 @@ namespace SampleBackend.Model.Model
     {
         public string? Error { get; set; }
         public User? User { get; set; }
+        public Chat? Chat { get; set; }
         public Login? Login { get; set; }
         public RoleRights? RoleRights { get; set; }
         public ForgotPassword? ForgotPassword { get; set; }
@@ -23,6 +24,7 @@ namespace SampleBackend.Model.Model
 
     }
     public class User : Messages { }
+    public class Chat : Messages { }
     public class Login : Messages { }
     public class RoleRights : Messages { }
     public class ForgotPassword : Messages { }
